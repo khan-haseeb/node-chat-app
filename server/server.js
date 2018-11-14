@@ -12,9 +12,32 @@ var io=socketIO(server);
 io.on('connection',(socket) => {
 	console.log('new user connected');
 
+	socket.emit('newEmail',{
+		from: 'haseebk521@gmail.com',
+		text:'hello there',
+		created: 123
+	});
+
+	
+	socket.on('createEmail',(newEmail) => {
+		console.log('createEmail',newEmail);
+	});
+
+	socket.emit('newMessage',{
+		from:'ali@gmail.com',
+		text:'hello haseebk',
+		created:1234
+	});
+
+	socket.on('createMessage',(newMessage) => {
+		console.log('createMessage',newMessage);
+	})
+
 	socket.on('disconnect', () => {
 		console.log('disconnected form client');
 	});
+
+
 });
 
 
