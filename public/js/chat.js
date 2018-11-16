@@ -117,7 +117,7 @@ var socket=io();
        e.preventDefault();
 
        socket.emit('createMessage', {
-       	from:'user',
+       	
        	text: jQuery('[name=message]').val()
        }, function () {
 
